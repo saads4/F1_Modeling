@@ -32,5 +32,5 @@ enc = LabelEncoder()
 input_data["country"] = enc.fit_transform(input_data["country"])
 
 if st.button("Predict"):
-    prediction = model.predict(input_data)[0]
+    prediction = model.predict(input_data.reindex(columns=model.feature_names_in_, fill_value=0))
     st.success(f"Predicted target finish: {int(prediction)}")
